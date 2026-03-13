@@ -1,129 +1,112 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // EmailJS initialization
-    (function() {
-        // TODO: Replace with your actual EmailJS credentials from https://www.emailjs.com/
-        emailjs.init("h0tnxkL2ZIBDGlIQy"); // Replace with your Public Key
-    })();
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^=\"#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+    // Mission Carousel Logic - True Infinite Loop
+    const carouselTrack = document.querySelector('.carousel-track');
+    const carouselContainer = document.querySelector('.carousel-container');
+    const prevBtn = document.getElementById('missionPrev');
+    const nextBtn = document.getElementById('missionNext');
+    const missionItems = document.querySelectorAll('.mission-item');
+    
+    let currentIndex = 0;
+    let itemsPerView = 3;
+    const totalItems = missionItems.length; // 6
+    
+    // Clone items for seamless infinite loop
+    const clonesNeeded = itemsPerView * 2;
+    for (let i = 0; i < clonesNeeded; i++) {
+        carouselTrack.appendChild(missionItems[i % totalItems].cloneNode(true));
+    }
+    
+    for (let i = 0; i < itemsPerView; i++) {
+        carouselTrack.insertBefore(missionItems[totalItems - 1 - i].cloneNode(true), carouselTrack.firstChild);
+    }
+    
+    function updateCarousel() {
+        const itemWidth = missionItems[0].offsetWidth + 30; // + gap
+        const offset = -currentIndex * itemWidth;
+        carouselTrack.style.transform = `translateX(${offset}px)`;
+        
+        // Buttons always enabled for infinite
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+        prevBtn.style.opacity = '1';
+        nextBtn.style.opacity = '1';
+    }
+    
+    // Next button - infinite loop
+    nextBtn.addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
     });
-
-    // Navbar background change on scroll
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+    
+    // Prev button - infinite loop  
+    prevBtn.addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    });
+    
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let currentX = 0;
+    
+    carouselTrack.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+    });
+    
+    carouselTrack.addEventListener('touchmove', function(e) {
+        currentX = e.touches[0].clientX;
+    });
+    
+    carouselTrack.addEventListener('touchend', function() {
+        const diffX = startX - currentX;
+        if (Math.abs(diffX) > 50) { // Minimum swipe distance
+            if (diffX > 0) { // Swipe left → next
+                currentIndex = (currentIndex + 1) % totalItems;
+            } else if (diffX < 0) { // Swipe right → prev
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            }
+            updateCarousel();
         }
     });
-
-    // Animation on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.feature-card, .product-card, .service-card').forEach(el => {
-        observer.observe(el);
-    });
-
-    // Toast notification functions
-    function showToast(message, isError = false) {
-        const toast = document.getElementById('toast');
-        const toastMessage = document.getElementById('toastMessage');
-        const toastIcon = toast.querySelector('.toast-icon i');
-        const toastTitle = toast.querySelector('.toast-title');
-        
-        toastMessage.textContent = message;
-        
-        if (isError) {
-            toast.classList.add('error');
-            toastTitle.textContent = 'Error!';
-            toastIcon.className = 'fas fa-exclamation-circle';
+    
+    // Responsive: adjust items per view
+    function handleResize() {
+        const width = window.innerWidth;
+        if (width < 768) {
+            itemsPerView = 1;
+        } else if (width < 1200) {
+            itemsPerView = 2;
         } else {
-            toast.classList.remove('error');
-            toastTitle.textContent = 'Success!';
-            toastIcon.className = 'fas fa-check-circle';
+            itemsPerView = 3;
         }
-        
-        toast.classList.add('show');
-        
-        // Auto-hide after 5 seconds
-        setTimeout(function() {
-            hideToast();
+        // Keep currentIndex valid for infinite loop (modulo handles it)
+        updateCarousel();
+    }
+    
+    window.addEventListener('resize', handleResize);
+    
+    // Initialize
+    updateCarousel();
+    
+    // Auto-play infinite
+    let autoPlayInterval;
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            currentIndex++;
+            updateCarousel();
         }, 5000);
     }
-
-    function hideToast() {
-        const toast = document.getElementById('toast');
-        toast.classList.remove('show');
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
     }
-
-    // Contact Form Submission using EmailJS
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-
-    if (contactForm && submitBtn) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                product: document.getElementById('product').value,
-                message: document.getElementById('message').value
-            };
-
-            // Change button to loading state
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-
-            // Send email using EmailJS
-            // TODO: Replace 'service_s43ydeg' and 'template_yz6g90k' with your actual EmailJS values
-            emailjs.send('service_s43ydeg', 'template_yz6g90k', formData)
-                .then(function(response) {
-                    // Reset button
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-
-                    // Show success toast notification
-                    showToast('Thank you! Your message has been sent successfully. We will get back to you soon.');
-                    
-                    // Reset form
-                    contactForm.reset();
-                })
-                .catch(function(error) {
-                    // Reset button
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-
-                    // Show error toast notification
-                    showToast('Sorry, there was an error sending your message. Please try again or contact us directly.', true);
-                    console.error('Error:', error);
-                });
-        });
-    }
+    
+    // Pause on hover
+    carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+    carouselContainer.addEventListener('mouseleave', startAutoPlay);
+    
+    // Start auto-play after init
+    setTimeout(startAutoPlay, 2000);
+    
+    console.log('Mission carousel initialized - INFINITE LOOP: 6 items continuous sliding');
 });
+
