@@ -1,0 +1,25 @@
+{
+  "hosting": {
+    "public": "y",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "install_choco.ps1",
+      "setup_php.bat",
+      "start_server.bat",
+      "send_mail.php",
+      "y/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/.well-known/acme-challenge/**",
+        "destination": "/.well-known/acme-challenge/**"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
