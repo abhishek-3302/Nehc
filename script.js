@@ -1,4 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Scroll-triggered animations for Products Section
+    const productObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                const cards = entry.target.querySelectorAll('.product-card');
+                cards.forEach((card, i) => {
+                    card.style.animationDelay = `${i * 0.1}s`;
+                    card.classList.add('animate-in');
+                });
+                productObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const productsSection = document.querySelector('.products');
+    if (productsSection) {
+        productObserver.observe(productsSection);
+    }
+
+    // Scroll-triggered animations for Contact Section
+    const contactObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const contactInfo = entry.target.querySelector('.contact-info');
+                const contactForm = entry.target.querySelector('.contact-form');
+                
+                if (contactInfo) {
+                    contactInfo.style.animation = 'slideInLeft 0.8s ease forwards';
+                }
+                if (contactForm) {
+                    contactForm.style.animation = 'slideInRight 0.8s ease 0.2s forwards';
+                }
+                
+                contactObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    const contactSection = document.querySelector('.contact');
+    if (contactSection) {
+        contactObserver.observe(contactSection);
+    }
+
     // Mission Carousel Logic - True Infinite Loop
     const carouselTrack = document.querySelector('.carousel-track');
     const carouselContainer = document.querySelector('.carousel-container');
@@ -91,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let autoPlayInterval;
     function startAutoPlay() {
         autoPlayInterval = setInterval(() => {
-            currentIndex++;
+            currentIndex = (currentIndex + 1) % totalItems;
             updateCarousel();
         }, 5000);
     }
@@ -194,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let servicesAutoPlayInterval;
     function startServicesAutoPlay() {
         servicesAutoPlayInterval = setInterval(() => {
-            servicesCurrentIndex++;
+            servicesCurrentIndex = (servicesCurrentIndex + 1) % servicesTotalItems;
             updateServicesCarousel();
         }, 5000);
     }
@@ -298,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let clientsAutoPlayInterval;
     function startClientsAutoPlay() {
         clientsAutoPlayInterval = setInterval(() => {
-            clientsCurrentIndex++;
+            clientsCurrentIndex = (clientsCurrentIndex + 1) % clientsTotalItems;
             updateClientsCarousel();
         }, 4000);
     }
@@ -418,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let testimonialsAutoPlayInterval;
     function startTestimonialsAutoPlay() {
         testimonialsAutoPlayInterval = setInterval(() => {
-            testimonialsCurrentIndex++;
+            testimonialsCurrentIndex = (testimonialsCurrentIndex + 1) % testimonialsTotalItems;
             updateTestimonialsCarousel();
         }, 5000);
     }
@@ -434,5 +477,67 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(startTestimonialsAutoPlay, 2000);
     
     console.log('Testimonials carousel initialized - INFINITE LOOP: ' + testimonialsTotalItems + ' items continuous sliding');
+
+    // Contact Form Submission
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                from_phone: document.getElementById('phone').value,
+                product: document.getElementById('product').value,
+                message: document.getElementById('message').value
+            };
+            
+            emailjs.send('service_s43ydeg', 'template_yz6g90k', templateParams)
+                .then(function() {
+                    showToast('Message sent successfully!');
+                    contactForm.reset();
+                }, function(error) {
+                    showToast('Failed to send message. Please try again.', 'error');
+                })
+                .finally(function() {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                });
+        });
+    }
+
+    // Toast Functions
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        
+        toastMessage.textContent = message;
+        
+        if (type === 'error') {
+            toast.classList.add('error');
+        } else {
+            toast.classList.remove('error');
+        }
+        
+        toast.classList.add('show');
+        
+        setTimeout(function() {
+            hideToast();
+        }, 5000);
+    }
+
+    function hideToast() {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('show');
+    }
+
+    // Make hideToast available globally
+    window.hideToast = hideToast;
 });
 
