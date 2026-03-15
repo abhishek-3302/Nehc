@@ -457,6 +457,15 @@
         }
 
         @media (max-width: 1024px) {
+            .header-container {
+                padding: 0 3%;
+            }
+            .hero-container {
+                gap: 40px;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -557,23 +566,148 @@
             font-size: 18px;
         }
 
-        .about-info {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .about-info p {
-            margin-bottom: 10px;
+        .gem-feature {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            padding: 20px 25px;
+            border-radius: 12px;
+            border: 2px solid #ffd700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 20px;
         }
 
-        .about-info i {
-            color: var(--primary-color);
-            width: 20px;
+        .gem-badge {
+            margin: 25px 0;
+        }
+
+        .gem-portal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #0d47a1 100%);
+            padding: 18px 30px;
+            border-radius: 16px;
+            border: 2px solid #ffd700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+        }
+
+        .gem-portal-link:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(26, 35, 126, 0.5);
+            border-color: #ffeb3b;
+        }
+
+        .gem-hero-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .gem-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .gem-title {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .gem-status {
+            color: #ffd700;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .gem-status i {
+            font-size: 0.85rem;
+        }
+
+        .gem-visit {
+            background: #ffd700;
+            color: #1a237e;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .gem-portal-link:hover .gem-visit {
+            background: #ffeb3b;
+            transform: translateX(5px);
+        }
+
+        .gem-visit i {
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .gem-badge {
+                margin: 20px 0;
+                width: 100%;
+            }
+            .gem-portal-link {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                text-align: center;
+                width: 100%;
+            }
+            .gem-hero-logo {
+                width: 80px;
+                height: 80px;
+            }
+            .gem-text {
+                align-items: center;
+            }
+            .gem-title {
+                font-size: 1rem;
+            }
+            .gem-status {
+                font-size: 0.85rem;
+            }
+            .gem-visit {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gem-portal-link {
+                padding: 15px;
+            }
+            .gem-hero-logo {
+                width: 65px;
+                height: 65px;
+            }
+            .gem-title {
+                font-size: 0.9rem;
+            }
+            .gem-status {
+                font-size: 0.8rem;
+            }
+            .gem-visit {
+                font-size: 0.8rem;
+                padding: 10px 15px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -2352,9 +2486,18 @@
             }
             .header-container {
                 height: 70px;
+                padding: 0 4%;
+            }
+            .logo-img {
+                width: 50px;
+                height: 50px;
             }
             .logo-text {
-                font-size: 1rem;
+                font-size: 0.95rem;
+            }
+            .mobile-toggle {
+                width: 40px;
+                height: 40px;
             }
             nav {
                 position: fixed;
@@ -2400,6 +2543,13 @@
             .hero {
                 padding: 100px 5% 60px;
             }
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-content {
+                text-align: center;
+            }
             .hero h1 {
                 font-size: 2rem;
             }
@@ -2416,12 +2566,23 @@
                 text-align: center;
             }
             .hero-stats {
-                flex-direction: column;
-                gap: 20px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .stat-item {
+                flex: 1 1 calc(33.333% - 15px);
+                min-width: 80px;
+                text-align: center;
             }
             .hero-image {
                 order: -1;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
+            }
+            .hero-image img {
+                max-width: 100%;
+                height: auto;
             }
             .features-grid,
             .services-grid,
@@ -2450,19 +2611,26 @@
 
         @media (max-width: 480px) {
             .hero {
-                padding: 100px 5% 40px;
+                padding: 90px 4% 30px;
             }
             .hero h1 {
-                font-size: 1.6rem;
-            }
-            .hero-stats {
-                align-items: flex-start;
-            }
-            .stat-number {
                 font-size: 1.5rem;
             }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .hero-stats {
+                gap: 10px;
+            }
+            .stat-item {
+                flex: 1 1 calc(50% - 10px);
+                min-width: 70px;
+            }
+            .stat-number {
+                font-size: 1.4rem;
+            }
             .stat-label {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
             }
         }
 
