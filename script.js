@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('nav');
+    
+    if (mobileToggle && nav) {
+        mobileToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+    }
+
     // Scroll-triggered animations for Products Section
     const productObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
