@@ -2381,6 +2381,29 @@
             font-size: 0.9rem;
         }
 
+        .footer-bottom p {
+            margin-bottom: 8px;
+        }
+
+        .footer-bottom p:last-child {
+            margin-bottom: 0;
+        }
+
+        .developed-by {
+            font-size: 0.85rem;
+        }
+
+        .developed-by a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .developed-by a:hover {
+            color: #ffd700;
+        }
+
         /* Rating Badge */
         .rating-badge {
             display: inline-flex;
