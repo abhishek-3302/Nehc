@@ -1191,6 +1191,8 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            z-index: 10000;
+            pointer-events: none;
         }
 
         .whatsapp-chat:hover .whatsapp-chat-tooltip {

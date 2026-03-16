@@ -577,136 +577,230 @@
             gap: 20px;
         }
 
+        .marketplace-badges {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0 20px;
+            flex-wrap: wrap;
+        }
+
         .gem-badge {
-            margin: 25px 0;
+            display: inline-block;
         }
 
         .gem-portal-link {
             display: inline-flex;
             align-items: center;
-            gap: 18px;
-            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #0d47a1 100%);
-            padding: 18px 30px;
-            border-radius: 16px;
-            border: 2px solid #ffd700;
+            gap: 15px;
+            background: linear-gradient(135deg, #0077b6, #023e8a);
+            padding: 14px 24px;
+            border-radius: 12px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .gem-portal-link:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(26, 35, 126, 0.5);
-            border-color: #ffeb3b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 119, 182, 0.35);
         }
 
         .gem-hero-logo {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             object-fit: contain;
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: #fff;
+            border-radius: 8px;
+            padding: 6px;
         }
 
         .gem-text {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .gem-title {
-            color: #ffffff;
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .gem-status {
-            color: #ffd700;
-            font-size: 0.95rem;
-            font-weight: 600;
+            color: #90e0ef;
+            font-size: 0.85rem;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
         .gem-status i {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
         }
 
-        .gem-visit {
-            background: #ffd700;
-            color: #1a237e;
-            padding: 10px 18px;
+        .indiamart-badge {
+            margin: 0 0 15px;
+            display: inline-block;
+        }
+
+        .indiamart-portal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #0077b6, #023e8a);
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .indiamart-portal-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 119, 182, 0.35);
+        }
+
+        .indiamart-hero-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background: #fff;
             border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
+            padding: 6px;
+        }
+
+        .indiamart-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .indiamart-title {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .indiamart-status {
+            color: #90e0ef;
+            font-size: 0.85rem;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
+            gap: 4px;
         }
 
-        .gem-portal-link:hover .gem-visit {
-            background: #ffeb3b;
-            transform: translateX(5px);
-        }
-
-        .gem-visit i {
-            font-size: 0.8rem;
+        .indiamart-status i {
+            font-size: 0.75rem;
         }
 
         @media (max-width: 768px) {
-            .gem-badge {
-                margin: 20px 0;
-                width: 100%;
+            .marketplace-badges {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+                margin: 20px 0 15px;
+            }
+            .gem-badge,
+            .indiamart-badge {
+                flex: 1;
+                min-width: 0;
             }
             .gem-portal-link {
                 flex-direction: column;
-                padding: 20px;
-                gap: 15px;
+                padding: 12px 8px;
+                gap: 8px;
                 text-align: center;
-                width: 100%;
             }
             .gem-hero-logo {
-                width: 80px;
-                height: 80px;
+                width: 40px;
+                height: 40px;
+                padding: 4px;
             }
             .gem-text {
                 align-items: center;
             }
             .gem-title {
-                font-size: 1rem;
+                font-size: 0.7rem;
+                line-height: 1.2;
             }
             .gem-status {
-                font-size: 0.85rem;
+                font-size: 0.65rem;
             }
-            .gem-visit {
+            .indiamart-portal-link {
+                flex-direction: column;
+                padding: 12px 8px;
+                gap: 8px;
+                text-align: center;
+            }
+            .indiamart-hero-logo {
+                width: 40px;
+                height: 40px;
+                padding: 4px;
+            }
+            .indiamart-text {
+                align-items: center;
+            }
+            .indiamart-title {
+                font-size: 0.7rem;
+                line-height: 1.2;
+            }
+            .indiamart-status {
+                font-size: 0.65rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .marketplace-badges {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .gem-badge,
+            .indiamart-badge {
                 width: 100%;
-                justify-content: center;
-                padding: 12px 20px;
+            }
+            .gem-portal-link,
+            .indiamart-portal-link {
+                flex-direction: row;
+                padding: 10px 14px;
+                justify-content: flex-start;
+            }
+            .gem-hero-logo,
+            .indiamart-hero-logo {
+                width: 35px;
+                height: 35px;
+            }
+            .gem-text,
+            .indiamart-text {
+                align-items: flex-start;
+            }
+            .gem-title,
+            .indiamart-title {
+                font-size: 0.8rem;
+            }
+            .gem-status,
+            .indiamart-status {
+                font-size: 0.7rem;
             }
         }
 
         @media (max-width: 480px) {
-            .gem-portal-link {
+            .indiamart-portal-link {
                 padding: 15px;
             }
-            .gem-hero-logo {
+            .indiamart-hero-logo {
                 width: 65px;
                 height: 65px;
             }
-            .gem-title {
+            .indiamart-title {
                 font-size: 0.9rem;
             }
-            .gem-status {
+            .indiamart-status {
                 font-size: 0.8rem;
-            }
-            .gem-visit {
-                font-size: 0.8rem;
-                padding: 10px 15px;
             }
         }
 
@@ -1033,7 +1127,7 @@
         .product-card .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: fill;
+            object-fit: contain;
             padding: 20px;
             transition: transform 0.5s ease;
         }
@@ -1067,6 +1161,16 @@
 
         .cleaning-card .product-image {
             background: linear-gradient(135deg, #E2F5FF 0%, #E2F5FF 50%, #E2F5FF 100%);
+            padding: 15px;
+            height: auto;
+            min-height: 200px;
+        }
+
+        .cleaning-card .product-image img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain;
         }
 
         @media (max-width: 1200px) {
@@ -2748,7 +2852,7 @@
         .whatsapp-chat-tooltip {
             position: absolute;
             bottom: 70px;
-            right: 0;
+            right: 130px;
             background: var(--dark);
             color: white;
             padding: 10px 15px;
@@ -2758,6 +2862,8 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            z-index: 10000;
+            pointer-events: none;
         }
 
         .whatsapp-chat:hover .whatsapp-chat-tooltip {
