@@ -2864,6 +2864,8 @@
             transition: all 0.3s ease;
             z-index: 10000;
             pointer-events: none;
+            display: inline-block;
+            min-width: max-content;
         }
 
         .whatsapp-chat:hover .whatsapp-chat-tooltip {
