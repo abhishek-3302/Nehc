@@ -1181,8 +1181,8 @@
         .whatsapp-chat-tooltip {
             position: absolute;
             bottom: 70px;
-            right: 0;
-            background: var(--dark);
+            right: 130px;
+            background: #1a1a2e;
             color: white;
             padding: 10px 15px;
             border-radius: 8px;

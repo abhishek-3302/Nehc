@@ -2853,7 +2853,7 @@
             position: absolute;
             bottom: 70px;
             right: 130px;
-            background: var(--dark);
+            background: #1a1a2e;
             color: white;
             padding: 10px 15px;
             border-radius: 8px;
