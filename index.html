@@ -66,8 +66,13 @@
     <link rel="preconnect" href="https://images.unsplash.com">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="LOGO.png">
-    <link rel="apple-touch-icon" href="LOGO.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0077b6">
 
     <!-- JSON-LD Structured Data for SEO -->
     <script type="application/ld+json">
@@ -195,15 +200,54 @@
                         <i class="fas fa-box-open"></i> Our Products
                     </a>
                 </div>
-                <div class="gem-badge">
-                    <a href="https://www.gem.gov.in/" target="_blank" rel="noopener noreferrer" class="gem-portal-link">
-                        <img src="images/gem-logo.png" alt="GEM Portal" class="gem-hero-logo">
-                        <div class="gem-text">
-                            <span class="gem-title">Government e-Marketplace</span>
-                            <span class="gem-status"><i class="fas fa-check-circle"></i> Verified Seller</span>
-                        </div>
-                        <span class="gem-visit">Visit GeM <i class="fas fa-arrow-right"></i></span>
-                    </a>
+                <div class="marketplace-badges">
+                    <div class="gem-badge">
+                        <a href="https://www.gem.gov.in/" target="_blank" rel="noopener noreferrer" class="gem-portal-link">
+                            <img src="images/gem-logo.png" alt="GEM Portal" class="gem-hero-logo">
+                            <div class="gem-text">
+                                <span class="gem-title">Government e-Marketplace</span>
+                                <span class="gem-status"><i class="fas fa-check-circle"></i> Verified Seller</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="indiamart-badge">
+                        <a href="https://www.indiamart.com/" target="_blank" rel="noopener noreferrer" class="indiamart-portal-link">
+                            <img src="images/indiamart-logo.png" alt="IndiaMart" class="indiamart-hero-logo">
+                            <div class="indiamart-text">
+                                <span class="indiamart-title">IndiaMart</span>
+                                <span class="indiamart-status"><i class="fas fa-check-circle"></i> Trusted Seller</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="certification-badges">
+                    <div class="certification-badge">
+                        <a href="#trust" class="certification-link">
+                            <img src="images/startup-india.png" alt="Startup India" class="certification-logo">
+                            <div class="certification-text">
+                                <span class="certification-title">Startup India</span>
+                                <span class="certification-status"><i class="fas fa-check-circle"></i> DPIIT Recognized</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="certification-badge">
+                        <a href="#trust" class="certification-link">
+                            <img src="images/ISO.png" alt="ISO 9001 Certified" class="certification-logo">
+                            <div class="certification-text">
+                                <span class="certification-title">ISO 9001</span>
+                                <span class="certification-status"><i class="fas fa-check-circle"></i> Quality Certified</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="certification-badge">
+                        <a href="#trust" class="certification-link">
+                            <i class="fas fa-trademark certification-logo-icon"></i>
+                            <div class="certification-text">
+                                <span class="certification-title">Trademark™</span>
+                                <span class="certification-status"><i class="fas fa-check-circle"></i> Registered</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -223,6 +267,46 @@
             <div class="hero-image">
                 <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=500&fit=crop"
                     alt="Medical Equipment" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Certifications Section -->
+    <section class="trust-certifications" id="trust">
+        <div class="trust-container">
+            <div class="section-header">
+                <h2>Trust & <span>Certifications</span></h2>
+                <p>Recognized and certified for quality, innovation, and excellence in healthcare solutions</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <div class="cert-icon-wrapper">
+                        <img src="images/startup-india.png" alt="Startup India Logo" class="cert-icon">
+                    </div>
+                    <h3>Startup India</h3>
+                    <p>Recognized by the Department for Promotion of Industry and Internal Trade (DPIIT) as an innovative healthcare startup driving innovation in medical equipment supply and laboratory solutions.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon-wrapper">
+                        <img src="images/ISO.png" alt="ISO 9001 Logo" class="cert-icon">
+                    </div>
+                    <h3>ISO 9001 Certified</h3>
+                    <p>Certified under ISO 9001 Quality Management System standards, ensuring consistent delivery of high-quality products and exceptional customer service to our healthcare partners.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon-wrapper cert-icon-wrapper-icon">
+                        <i class="fas fa-trademark"></i>
+                    </div>
+                    <h3>Registered Trademark™</h3>
+                    <p>Our brand and business name are registered trademark(s), protecting our intellectual property and ensuring authenticity in every product and service we deliver.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon-wrapper cert-icon-wrapper-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h3>Quality Assurance</h3>
+                    <p>Committed to rigorous quality control standards and extensive testing protocols to ensure all products meet international healthcare and laboratory equipment standards.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -487,7 +571,7 @@
     <!-- What We Deals With Section -->
     <section class="deals" id="deals">
         <div class="section-header">
-            <h2>What We <span>Deals With</span></h2>
+            <h2>What We <span>Deal In</span></h2>
             <p>Comprehensive range of healthcare and laboratory products to meet all your needs</p>
         </div>
         <div class="deals-grid">
@@ -765,7 +849,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div
             </div>
             <button class="carousel-btn prev" id="testimonialsPrev"><i class="fas fa-chevron-left"></i></button>
             <button class="carousel-btn next" id="testimonialsNext"><i class="fas fa-chevron-right"></i></button>
@@ -793,20 +877,13 @@
                     </div>
                 </div>
 
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Branch Office</h4>
-                        <p>House No. 11, Radha Nagar<br>Near Sai Baba Mandir, Six Mile<br>Mahapurush Madhabdev Path,
-                            Khanapara – 781022</p>
-                    </div>
-                </div>
+                
 
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i>
                     <div>
                         <h4>Phone</h4>
-                        <p>09972230490<br>7099073733</p>
+                        <p>+91 6001314755<br>+91 7099073733</p>
                     </div>
                 </div>
 
@@ -909,7 +986,7 @@
                         <a href="https://www.facebook.com/p/North-Eastern-Healthcare-Company-61568578192877/"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/nehc.in/"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/919972230490"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/916001314755"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -935,15 +1012,14 @@
                 <div class="footer-column">
                     <h4>Contact Info</h4>
                     <ul>
-                        <li><a href="#">+91 9972230490</a></li>
-                        <li><a href="#">+91 7099073733</a></li>
+                        <li><a href="#">+91 6001314755</a></li>
                         <li><a href="#">nehealthcarecompany@gmail.com</a></li>
                         <li><a href="#">Guwahati, Assam</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 North Eastern Health Care Company. All Rights Reserved. | GST: 18AATFN3796R1ZV</p>
+                <p>&copy; 2024 North Eastern Health Care Company™. All Rights Reserved. | GST: 18AATFN3796R1ZV</p>
                 <p class="developed-by">This website is developed and maintained by <a href="https://genware.in" target="_blank" rel="noopener noreferrer">Genware Technologies</a></p>
             </div>
         </div>
@@ -964,7 +1040,7 @@
     </div>
 
     <!-- WhatsApp Chat Button -->
-    <a href="https://wa.me/917892649170" class="whatsapp-chat" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/916001314755" class="whatsapp-chat" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-chat-tooltip">Chat with us on WhatsApp</span>
     </a>
