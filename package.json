@@ -1,0 +1,17 @@
+{
+  "name": "north-eastern-healthcare-website",
+  "version": "1.0.0",
+  "description": "North Eastern Healthcare Company - Medical & Laboratory Equipment Supplier Website",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static website - no build required'"
+  },
+  "keywords": [
+    "healthcare",
+    "medical equipment",
+    "laboratory equipment",
+    "diagnostic equipment"
+  ],
+  "author": "North Eastern Healthcare Company",
+  "license": "MIT"
+}
